@@ -11,7 +11,7 @@ import ContactForm from "./features/contact/ContactForm";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 export default function App() {
-    const { themeName, toggleName } = useTheme();
+    const { themeName, toggleTheme } = useTheme();
     const theme = themeName === "dark" ? darkTheme : lightTheme;
 
     return (

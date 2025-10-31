@@ -13,6 +13,5 @@ const Btn = styled.button`
 `;
 
 export default function RetryButton({ onRetry }) {
-    return
-    <Btn onClick={onRetry}>Retry</Btn>;
+    return <Btn onClick={onRetry}>Retry</Btn>;
 }

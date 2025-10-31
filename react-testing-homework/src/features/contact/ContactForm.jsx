@@ -29,32 +29,38 @@ const Button = styled.button`
 `;
 
 export default function ContactForm() {
-    const formik = useFormik({
-        initialValues: { name: "", email: "" },
-        validationSchema: Yup.object({
-            name: Yup.string().required("Name required"),
-            email: Yup.string().email("Invalid email").required("Email reqired"),
-        }),
-        onSubmit: () => { }
-    });
+  const formik = useFormik({
+    initialValues: { name: "", email: "" },
+    validationSchema: Yup.object({
+      name: Yup.string().required("Name required"),
+      email: Yup.string().email("Invalid email").required("Email required"),
+    }),
+    onSubmit: (values) => {
+      alert("Form submitted!\n" + JSON.stringify(values, null, 2));
+    }
+  });
 
-    return (
-        <Card>
-            <form onSubmit={formik.handleSubmit}>
-                <Input
-                    name="name"
-                    placeholder="Name"
-                    onChange={formik.handleChange}
-                />
-                {formik.errors.name && <p>{formik.errors.name}</p>}
-                <Input
-                name="email"
-                placeholder="Email"
-                onChange={formik.handleChange}
-                />
-                {formik.errors.email && <p>{formik.errors.email}</p>}
-                <Button type="submit">Submit</Button>
-            </form>
-        </Card>
-    );
+  return (
+    <Card>
+      <form onSubmit={formik.handleSubmit}>
+        <Input
+          name="name"
+          placeholder="Name"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+        />
+        {formik.errors.name && <p>{formik.errors.name}</p>}
+
+        <Input
+          name="email"
+          placeholder="Email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+        />
+        {formik.errors.email && <p>{formik.errors.email}</p>}
+
+        <Button type="submit">Submit</Button>
+      </form>
+    </Card>
+  );
 }

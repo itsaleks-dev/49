@@ -40,8 +40,7 @@ export default function UserProfile() {
 
     useEffect(load, []);
 
-    if (loading) return
-    <p data-testid="loading">Loading...</p>;
+    if (loading) return <p data-testid="loading">Loading...</p>;
     if (error)
         return (
             <>
